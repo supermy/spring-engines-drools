@@ -13,7 +13,7 @@
 
 	<appender name="RollingFileAppender" class="org.apache.log4j.RollingFileAppender">
 		<param name="Append" value="false" />
-		<param name="MaxFileSize" value="1KB" />
+		<param name="MaxFileSize" value="1000KB" />
 		<param name="File" value="log/my.log" />
 		<param name="MaxBackupIndex" value="3" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -23,7 +23,7 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="debug" />
+		<priority value="error" />
 		<appender-ref ref="console" />
 		<appender-ref ref="RollingFileAppender" />
 	</root>

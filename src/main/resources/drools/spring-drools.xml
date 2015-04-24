@@ -6,13 +6,24 @@
                            http://drools.org/schema/drools-spring http://anonsvn.jboss.org/repos/labs/labs/jbossrules/trunk/drools-container/drools-spring/src/main/resources/org/drools/container/spring/drools-spring-1.0.0.xsd
                            http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-	<drools:kbase id="kbase1">
-		<drools:resources>
-			<drools:resource type="DRL" source="classpath:rules/Message.drl" />
-		</drools:resources>
-	</drools:kbase>
+    <drools:kbase id="kbase1">
+        <drools:resources>
+            <drools:resource type="DRL" source="classpath:rules/Message.drl" />
+        </drools:resources>
+    </drools:kbase>
 
-	<!--<drools:ksession id="ksession1" type="stateful" kbase="kbase1" />-->
+    <drools:ksession id="ksession1" type="stateful" kbase="kbase1" />
+
+
+    <drools:kbase id="kbase-loan">
+        <drools:resources>
+            <drools:resource type="DRL" source="classpath:rules/Loan.drl" />
+        </drools:resources>
+    </drools:kbase>
+
+    <drools:ksession id="ksession-loan" type="stateful" kbase="kbase-loan" />
+
+
 
 	<!--<drools:kbase id="kbase-drink">-->
 		<!--<drools:resources>-->
@@ -38,15 +49,13 @@
 	</drools:kbase>
 
 	<drools:ksession id="ksession-excel" type="stateful" kbase="kbase-excel" />
-	
-	<!--  
-	<drools:kbase id="kbase-temp">
-		<drools:resources>
-			<drools:resource type="DRL" source="classpath:rules/Item.drl" />			
-		</drools:resources>
-	</drools:kbase>
 
-	<drools:ksession id="ksession-temp" type="stateful" kbase="kbase-temp" />
-	-->
+    <drools:kbase id="kbase-market">
+        <drools:resources>
+            <drools:resource type="DTABLE" source="classpath:rules/Market.xls" />
+        </drools:resources>
+    </drools:kbase>
+
+    <drools:ksession id="ksession-market" type="stateless" kbase="kbase-market" />
 	
 </beans>

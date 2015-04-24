@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
+
 public class RuleInExcelTest {
 
 	
@@ -38,6 +39,12 @@ public class RuleInExcelTest {
 		KnowledgeBase kbase = KnowledgeBaseFactory.newKnowledgeBase();
 		kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
 		StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
+
+//        Map<String,Integer> params=new HashMap<String,Integer>();
+//        params.put("age",3);
+        //ksession.execute(Arrays.asList(new Object[]{params}));
+//        ksession.insert(income);
+
         ksession.fireAllRules();
         ksession.dispose();
     }
