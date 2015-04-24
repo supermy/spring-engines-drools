@@ -52,7 +52,7 @@
 
     <drools:kbase id="kbase-market">
         <drools:resources>
-            <drools:resource type="DTABLE" source="classpath:rules/Market.xls" />
+            <drools:resource type="DTABLE" source="classpath:rules/MyMarket.xls" />
         </drools:resources>
     </drools:kbase>
 
