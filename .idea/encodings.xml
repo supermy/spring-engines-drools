@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/pom.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/supermy/rule/junit/MessagesTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/supermy/rule/junit/RuleInExcelTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/log4j.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/drools/spring-drools.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/rules/Message.drl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/rules/RuleInExcel.xls" charset="UTF-8" />
+  </component>
+</project>

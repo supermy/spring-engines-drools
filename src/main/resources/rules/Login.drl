@@ -1,0 +1,87 @@
+package com.supermy;
+
+import com.supermy.rule.pojo.Vip
+import com.supermy.rule.service.LoginServiceImpl;
+
+import java.io.Console;
+import java.util.Scanner;
+
+
+
+rule "vip1"
+    salience 100
+    when
+        vip : Vip((name==null||name=="")&&
+                 (password==null||password=="") )
+    then
+        String tempName="jack";
+    	String tempPassword="123";
+
+//    	Console console=System.console();
+//    	Scanner scanner = new Scanner(System.in);
+//    	System.out.print("请输入用户名: ");
+//
+//		tempName=(console!=null?console.readLine():scanner.nextLine());
+//
+//		System.out.print("请输入密码： ");
+//		tempPassword=(console!=null?new String(console.readPassword()):scanner.nextLine());
+
+        vip.setName(tempName.trim());
+        vip.setPassword(tempPassword.trim());
+        update(vip);
+end
+
+rule "没有输入密码"
+    salience  90
+    when
+       vip:Vip((name!=null&&name!="")&&
+                 (password==null||password==""),$name:name)
+    then
+    	String tempPassword="";
+    	Console console=System.console();
+    	Scanner scanner = new Scanner(System.in);
+		System.out.print("请输入密码： ");
+		tempPassword=(console!=null?new String(console.readPassword()):scanner.nextLine());
+        vip.setPassword(tempPassword.trim());
+        update(vip);
+
+end
+
+
+rule "没有输入用户名"
+    salience  90
+    when
+       vip:Vip((name==null||name=="")&&
+                 (password!=null&&password!=""),$password:password )
+    then
+        String tempName="";
+    	Scanner scanner = new Scanner(System.in);
+    	System.out.print("请输入用户名: ");	
+		tempName=scanner.nextLine();
+        vip.setName(tempName.trim());
+        update(vip);
+
+end
+
+
+rule "输入正确的用户名和密码"
+    salience  80
+    when
+       vip:Vip((name!=null&&name!=""),
+                 (password!=null&&password!=""),LoginServiceImpl.checkDB(name,password) )
+    then
+        System.out.print(" 欢迎 !!!"+vip.getName());	
+
+end
+
+rule "输入错误的用户名和密码"
+    salience  80
+    when
+       vip:Vip((name!=null&&name!=""),
+                 (password!=null&&password!=""),!LoginServiceImpl.checkDB(name,password) )
+    then
+        System.out.print(" 输入错误用户名或密码，请重新输入 !!!\n");	
+        vip.setName("");
+        vip.setPassword("");
+        update(vip);
+end
