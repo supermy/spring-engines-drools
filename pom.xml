@@ -9,15 +9,62 @@
 	<name>spring drools jamesmo</name>
 	<version>1.0.0-SNAPSHOT</version>
 	<properties>
-        <!--<spring.version>3.2.10.RELEASE</spring.version>-->
-        <spring.version>4.1.0.RELEASE</spring.version>
+        <spring.version>3.2.10.RELEASE</spring.version>
+        <!--<spring.version>4.1.0.RELEASE</spring.version>-->
 		<sourceEncoding>UTF-8</sourceEncoding>
 		<drools-version>5.6.0.Final</drools-version>
-	</properties>
+        <slf4j.version>1.6.1</slf4j.version>
+
+    </properties>
 
 	<dependencies>
 
-		<!-- 规则引擎 beign -->
+        <!-- logging begin -->
+        <!-- slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <!-- slf4j-log4j绑定 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.mail</groupId>
+                    <artifactId>mail</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.jms</groupId>
+                    <artifactId>jms</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jdmk</groupId>
+                    <artifactId>jmxtools</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jmx</groupId>
+                    <artifactId>jmxri</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>oro</groupId>
+                    <artifactId>oro</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- logging end -->
+
+        <!-- 规则引擎 beign -->
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-spring</artifactId>
@@ -32,18 +79,18 @@
 			<!--<version>${drools-version}</version>-->
 
 		<!--</dependency>-->
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-core</artifactId>
-			<version>${drools-version}</version>
+		<!--<dependency>-->
+			<!--<groupId>org.drools</groupId>-->
+			<!--<artifactId>drools-core</artifactId>-->
+			<!--<version>${drools-version}</version>-->
 
-		</dependency>
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-compiler</artifactId>
-			<version>${drools-version}</version>
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.drools</groupId>-->
+			<!--<artifactId>drools-compiler</artifactId>-->
+			<!--<version>${drools-version}</version>-->
 
-		</dependency>
+		<!--</dependency>-->
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-decisiontables</artifactId>

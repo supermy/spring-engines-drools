@@ -8,6 +8,8 @@ import org.drools.io.ResourceFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.drools.runtime.StatelessKnowledgeSession;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -106,9 +108,18 @@ public class RuleInTableMarketTest {
             params.putAll(param.getParams());
             System.out.println("******params:"+params);
 
-            testExcel("/Users/moyong/project/env-myopensource/1-spring/13-jamesmo/spring-engines-drools/src/main/resources/rules/Market.xls", params);
+            long start=System.currentTimeMillis();
+            //testExcel("/Users/moyong/project/env-myopensource/1-spring/13-jamesmo/spring-engines-drools/src/main/resources/rules/MyMarket.xls", params);
+            long end=System.currentTimeMillis();
+            //System.out.println("******direct have time:"+(end-start));
 
-            //execlSpringTest(params);
+
+            start=System.nanoTime();
+            execlSpringTest(params);
+            end=System.nanoTime();
+            System.out.println("******spring have time:" + (end - start)/1000000000+"秒......");
+            System.out.println("******spring have time:" + (end - start)/1000000+"毫秒......");
+            System.out.println("******spring have time:" + (end - start)/1000+"微秒......");
 
             System.out.println("******result:"+params);
 
@@ -116,11 +127,16 @@ public class RuleInTableMarketTest {
 
         }
 
+    StatelessKnowledgeSession ksession;
+
+    @Before
+    public  void init(){
+        ClassPathXmlApplicationContext context  = new ClassPathXmlApplicationContext("drools/spring-drools.xml");
+         ksession = (StatelessKnowledgeSession) context.getBean( "ksession-market" );
+    }
 
     //@Test
     public  void execlSpringTest(Map<String, Object> params) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("drools/spring-drools.xml");
-        StatelessKnowledgeSession ksession = (StatelessKnowledgeSession) context.getBean( "ksession-market" );
 
         System.out.println(params);
 

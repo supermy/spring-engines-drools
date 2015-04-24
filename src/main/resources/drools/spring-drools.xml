@@ -15,15 +15,6 @@
     <drools:ksession id="ksession1" type="stateful" kbase="kbase1" />
 
 
-    <drools:kbase id="kbase-loan">
-        <drools:resources>
-            <drools:resource type="DRL" source="classpath:rules/Loan.drl" />
-        </drools:resources>
-    </drools:kbase>
-
-    <drools:ksession id="ksession-loan" type="stateful" kbase="kbase-loan" />
-
-
 
 	<!--<drools:kbase id="kbase-drink">-->
 		<!--<drools:resources>-->
